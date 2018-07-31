@@ -1,0 +1,129 @@
+#Config file, work in progress, currently only set up for CC toggle types
+#"#" will comment out line
+###########################################################################
+#Define Toe Pedal effect # (will turn on this effect from table below when depressed):
+Toe_switch_effect_link:	24
+###########################################################################
+#Define Tap Tempo MIDI commands (assumed to be control_change): Col1 = channel, Col2= 
+#Col1 = "Tap_tempo_MIDI_command", Needed to store the following tab-separated values to list 
+#Col2 = Tap_channel_number
+#Col3 = Tap_CC_number
+#Col4 = Tap_CC_value
+#Col5 = Comments (not used)
+Tap_tempo_MIDI_command	0	64	127	HD_tap_tempo
+Tap_tempo_MIDI_command	1	64	127	M13_tap_tempo
+##########################################################################
+#Tuner command (if Tap tempo is held)
+#Col1 = "Tuner_MIDI_commands", Needed to store the following tab-separated values to list
+#Col2 = Tuner_MIDI_channel
+#Col3 = Tuner_MIDI_CC_number
+#Col4 = Tuner_MIDI_CC_value_off
+#Col5 = Tuner_MIDI_CC_value_on
+#Col6 = Comments (not used)
+Tuner_MIDI_commands	0	69	0	127	HD_Tuner
+##########################################################################
+#Page names are assigned prior to every 9 buttons as follows:
+#Col1: "Page_name", Needed to store the following tab-separated values to list
+#Col2: 4 character string, note first 3 chars can be only be 0-9? last char can be any ascii?
+#Col3: 16 character string, must take up all 16 characters with something (such as space)
+#Col4: Comments (not used)
+Page_name	"1111"	"PRESETS         "	Page_0
+#########################################################################
+#Below is general format for page layouts:
+#Col1: Line number (used for reference only)
+#Col2: Effect_name, Must be string of 16 chars for display
+#Col3: Message_type (Refer to MIDO library types, may be control_change, program_change, etc)
+#Col4: Channel_number, must be 0-15, which actually refers to 1-16
+#Col5: CC_number, must be 0-127
+#Col6: Value_off, must be 0-127
+#Col7: Value_on, must be 0-127
+#Col8: Effect_state on initialization, boolean (On or Off).
+#Col9: Effect_type, "IA" vs "Preset"
+#Col10: Linked_on, if Effect_type = "Preset" will turn on these other lines (comma separated) when turned on. If not a preset (i.e., an IA patch), set to "NA"
+#Col11: Linked_off, if Effect_type = "Preset"  will turn off these other lines (comma separated) when turned on. If not a preset (i.e., an IA patch), set to "NA"
+#Col12: Color code for LED (FBV3 only), 00=?, 01=?, 02=red?....
+#Col13: Expression pedal #1 MIDI associations, Exp_channel(0-15). If not used then NA
+#Col14: Expression pedal #1 MIDI associations, Exp_CC(0-127). If not used then NA
+#Col15: Expression pedal #2 MIDI associations, Exp_channel(0-15). If not used then NA
+#Col16: Expression pedal #2 MIDI associations, Exp_CC(0-127). If not used then NA
+#Col17: Comments (not used)
+#Page 0
+00	"Clean           "	control_change	15	127	0	127	On	Preset	27	01,02,09,10,11,12,13,14,15,16,18,19,20,22,23,24,28,29,31,32,33,45,46,47,48,49,50,54,55,56,57,58,59	03	NA	NA	NA	NA	No_comment
+01	"Drive           "	control_change	15	127	0	127	Off	Preset	59	58,00,02	08	NA	NA	NA	NA	No_comment
+02	"Muff            "	control_change	15	127	0	127	Off	Preset	58	59,00,01	02	NA	NA	NA	NA	No_comment
+03	"EMPTYXXXXXXXXXXX"	control_change	15	127	0	127	Off	IA	NA	NA	00	NA	NA	NA	NA	No_comment
+04	"EMPTYXXXXXXXXXXX"	control_change	15	127	0	127	Off	IA	NA	NA	00	NA	NA	NA	NA	No_comment
+05	"EMPTYXXXXXXXXXXX"	control_change	15	127	0	127	Off	IA	NA	NA	00	NA	NA	NA	NA	No_comment
+06	"EMPTYXXXXXXXXXXX"	control_change	15	127	0	127	Off	IA	NA	NA	00	NA	NA	NA	NA	No_comment
+07	"EMPTYXXXXXXXXXXX"	control_change	15	127	0	127	Off	IA	NA	NA	00	NA	NA	NA	NA	No_comment
+08	"EMPTYXXXXXXXXXXX"	control_change	15	127	0	127	Off	IA	NA	NA	00	NA	NA	NA	NA	No_comment
+Page_name	"2222"	"FBV MIDI Control"	Page_1
+09	"FS1             "	control_change	0	51	0	127	Off	IA	NA	NA	02	00	01	NA	NA	No_comment
+10	"FS2             "	control_change	0	52	0	127	Off	IA	NA	NA	03	NA	NA	00	02	No_comment
+11	"FS3             "	control_change	0	53	0	127	Off	IA	NA	NA	04	00	01	00	02	No_comment
+12	"FS4             "	control_change	0	54	0	127	Off	IA	NA	NA	05	NA	NA	NA	NA	No_comment
+13	"FS5             "	control_change	0	55	0	127	Off	IA	NA	NA	06	NA	NA	NA	NA	No_comment
+14	"FS6             "	control_change	0	56	0	127	Off	IA	NA	NA	07	NA	NA	NA	NA	No_comment
+15	"FS7             "	control_change	0	57	0	127	Off	IA	NA	NA	08	NA	NA	NA	NA	No_comment
+16	"FS8             "	control_change	0	58	0	127	Off	IA	NA	NA	01	NA	NA	NA	NA	No_comment
+17	"EMPTYXXXXXXXXXXX"	control_change	0	59	0	127	Off	IA	NA	NA	03	NA	NA	NA	NA	No_comment
+Page_name	"3333"	"M13 PAGE 1      "	Page_2
+18	"M13 2A          "	control_change	1	14	0	127	Off	Preset	NA	19,20	04	NA	NA	NA	NA	No_comment
+19	"M13 2B          "	control_change	1	15	0	127	Off	Preset	NA	18,20	04	NA	NA	NA	NA	No_comment
+20	"M13 2C          "	control_change	1	16	0	127	Off	Preset	NA	18,19	04	NA	NA	NA	NA	No_comment
+21	"EMPTYXXXXXXXXXXX"	control_change	15	127	0	127	Off	IA	NA	NA	00	NA	NA	NA	NA	No_comment
+22	"M13 1A          "	control_change	1	11	0	127	Off	Preset	NA	23,24	07	NA	NA	01	01	No_comment
+23	"M13 1B          "	control_change	1	12	0	127	Off	Preset	NA	22,24	07	NA	NA	01	01	No_comment
+24	"M13 1C          "	control_change	1	13	0	127	Off	Preset	NA	22,23	07	01	01	NA	NA	No_comment
+25	"EMPTYXXXXXXXXXXX"	control_change	15	127	0	127	Off	IA	NA	NA	00	NA	NA	NA	NA	No_comment
+26	"EMPTYXXXXXXXXXXX"	control_change	15	127	0	127	Off	IA	NA	NA	00	NA	NA	NA	NA	No_comment
+Page_name	"4444"	"M13 PAGE 2      "	Page_3
+27	"M13 4A          "	control_change	1	20	0	127	On	Preset	NA	28,29	06	NA	NA	NA	NA	No_comment
+28	"M13 4B          "	control_change	1	21	0	127	Off	Preset	NA	27,29	08	NA	NA	NA	NA	No_comment
+29	"M13 4C          "	control_change	1	22	0	127	Off	Preset	NA	27,28	08	NA	NA	NA	NA	No_comment
+30	"EMPTYXXXXXXXXXXX"	control_change	15	127	0	127	Off	IA	NA	NA	00	NA	NA	NA	NA	No_comment
+31	"M13 3A          "	control_change	1	17	0	127	Off	Preset	NA	32,33	03	NA	NA	NA	NA	No_comment
+32	"M13 3B          "	control_change	1	18	0	127	Off	Preset	NA	31,33	03	NA	NA	NA	NA	No_comment
+33	"M13 3C          "	control_change	1	19	0	127	Off	Preset	NA	31,32	03	NA	NA	NA	NA	No_comment
+34	"EMPTYXXXXXXXXXXX"	control_change	15	127	0	127	Off	IA	NA	NA	00	NA	NA	NA	NA	No_comment
+35	"EMPTYXXXXXXXXXXX"	control_change	15	127	0	127	Off	IA	NA	NA	00	NA	NA	NA	NA	No_comment
+Page_name	"5555"	"M13 Looper      "	Page_4
+36	"M13 Record      "	control_change	1	50	64	127	Off	IA	NA	NA	02	NA	NA	NA	NA	No_comment
+37	"M13 Play        "	control_change	1	28	0	127	Off	Preset	NA	36	03	NA	NA	NA	NA	No_comment
+38	"M13 Overdub     "	control_change	1	50	0	63	Off	IA	NA	NA	02	NA	NA	NA	NA	No_comment
+39	"M13 Play once   "	control_change	1	80	0	127	Off	Preset	NA	36,37	03	NA	NA	NA	NA	No_comment
+40	"M13 Looper half "	control_change	1	36	0	127	Off	IA	NA	NA	05	NA	NA	NA	NA	No_comment
+41	"M13 Play F/R    "	control_change	1	85	0	127	Off	IA	NA	NA	05	NA	NA	NA	NA	No_comment
+42	"EMPTYXXXXXXXXXXX"	control_change	15	127	0	127	Off	IA	NA	NA	00	NA	NA	NA	NA	No_comment
+43	"EMPTYXXXXXXXXXXX"	control_change	15	127	0	127	Off	IA	NA	NA	00	NA	NA	NA	NA	No_comment
+44	"EMPTYXXXXXXXXXXX"	control_change	15	127	0	127	Off	IA	NA	NA	00	NA	NA	NA	NA	No_comment
+Page_name	"6666"	"HEX 1           "	Page_5
+45	"HEX 1-1         "	control_change	2	80	0	127	Off	IA	NA	NA	02	NA	NA	NA	NA	No_comment
+46	"HEX 1-2         "	control_change	2	81	0	127	Off	IA	NA	NA	02	NA	NA	NA	NA	No_comment
+47	"HEX 1-3         "	control_change	2	82	0	127	Off	IA	NA	NA	02	NA	NA	NA	NA	No_comment
+48	"HEX 1-4         "	control_change	2	83	0	127	Off	IA	NA	NA	02	NA	NA	NA	NA	No_comment
+49	"HEX 1-5         "	control_change	2	84	0	127	Off	IA	NA	NA	02	NA	NA	NA	NA	No_comment
+50	"HEX 1-6         "	control_change	2	85	0	127	Off	IA	NA	NA	02	NA	NA	NA	NA	No_comment
+51	"EMPTYXXXXXXXXXXX"	control_change	15	127	0	127	Off	IA	NA	NA	00	NA	NA	NA	NA	No_comment
+52	"EMPTYXXXXXXXXXXX"	control_change	15	127	0	127	Off	IA	NA	NA	00	NA	NA	NA	NA	No_comment
+53	"EMPTYXXXXXXXXXXX"	control_change	15	127	0	127	Off	IA	NA	NA	00	NA	NA	NA	NA	No_comment
+Page_name	"7777"	"HEX 2           "	Page_6
+54	"HEX 2-1         "	control_change	2	88	0	127	Off	IA	NA	NA	02	NA	NA	NA	NA	No_comment
+55	"HEX 2-2         "	control_change	2	89	0	127	Off	IA	NA	NA	02	NA	NA	NA	NA	No_comment
+56	"HEX 2-3         "	control_change	2	90	0	127	Off	IA	NA	NA	02	NA	NA	NA	NA	No_comment
+57	"HEX 2-4         "	control_change	2	91	0	127	Off	IA	NA	NA	02	NA	NA	NA	NA	No_comment
+58	"HEX 2-5         "	control_change	2	92	0	127	Off	IA	NA	NA	02	NA	NA	NA	NA	No_comment
+59	"HEX 2-6         "	control_change	2	93	0	127	Off	IA	NA	NA	02	NA	NA	NA	NA	No_comment
+60	"EMPTYXXXXXXXXXXX"	control_change	15	127	0	127	Off	IA	NA	NA	00	NA	NA	NA	NA	No_comment
+61	"EMPTYXXXXXXXXXXX"	control_change	15	127	0	127	Off	IA	NA	NA	00	NA	NA	NA	NA	No_comment
+62	"EMPTYXXXXXXXXXXX"	control_change	15	127	0	127	Off	IA	NA	NA	00	NA	NA	NA	NA	No_comment
+Page_name	"8888"	"HD Looper       "	Page_7
+63	"POD Record      "	control_change	0	60	64	127	Off	IA	NA	NA	02	NA	NA	NA	NA	No_comment
+64	"POD Overdub     "	control_change	0	60	0	63	Off	IA	NA	NA	02	NA	NA	NA	NA	No_comment
+65	"POD Play        "	control_change	0	61	0	127	Off	Preset	NA	63	03	NA	NA	NA	NA	No_comment
+66	"POD Play once   "	control_change	0	62	0	127	Off	Preset	NA	63,65	03	NA	NA	NA	NA	No_comment
+67	"POD Fwd / Rev   "	control_change	0	65	0	127	Off	IA	NA	NA	05	NA	NA	NA	NA	No_comment
+68	"POD Full / Half "	control_change	0	68	0	127	Off	IA	NA	NA	05	NA	NA	NA	NA	No_comment
+69	"EMPTYXXXXXXXXXXX"	control_change	15	127	0	127	Off	IA	NA	NA	00	NA	NA	NA	NA	No_comment
+70	"EMPTYXXXXXXXXXXX"	control_change	15	127	0	127	Off	IA	NA	NA	00	NA	NA	NA	NA	No_comment
+71	"EMPTYXXXXXXXXXXX"	control_change	15	127	0	127	Off	IA	NA	NA	00	NA	NA	NA	NA	No_comment
